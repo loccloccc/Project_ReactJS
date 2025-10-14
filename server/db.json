@@ -56,14 +56,14 @@
     },
     {
       "id": 4,
-      "taskName": "a2",
-      "assingeeId": 1759998093561,
+      "taskName": "ooas",
+      "assingeeId": 1759998074393,
       "projectId": 2,
-      "assgnDate": "2025-10-16",
-      "dueDate": "2025-10-17",
-      "priority": "trung bình",
-      "progress": "đúng tiến độ",
-      "status": "inprogress"
+      "assgnDate": "2025-10-14",
+      "dueDate": "2025-10-15",
+      "priority": "thấp",
+      "progress": "có rủi ro",
+      "status": "todo"
     }
   ],
   "project": [
@@ -71,7 +71,7 @@
       "id": 2,
       "idUser": 1759997903905,
       "projectName": "ưwww",
-      "image": "https://res.cloudinary.com/di8bnnkmd/image/upload/v1760188093/vswbymbcm9iz621jq7br.png",
+      "image": "https://res.cloudinary.com/di8bnnkmd/image/upload/v1760421918/o0gkl2ycqkzmnu5vfhwm.png",
       "note": "",
       "members": [
         {
@@ -81,6 +81,10 @@
         {
           "userId": 1759998093561,
           "role": "quan li"
+        },
+        {
+          "userId": 1759998074393,
+          "role": "111"
         }
       ]
     },

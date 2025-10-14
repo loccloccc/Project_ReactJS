@@ -54,13 +54,26 @@ export default function ProjectManagement() {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(searchJob.length / itemsPerPage);
 
-  
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentProjects = searchJob.slice(startIndex, startIndex + itemsPerPage);
+  const currentProjects = searchJob.slice(startIndex,startIndex + itemsPerPage);
 
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) setCurrentPage(page);
   };
+  const buttons = [];
+  for (let i = 1; i <= totalPages; i++) {
+    buttons.push(
+      <button
+        key={i}
+        onClick={() => handlePageChange(i)}
+        className={`px-3 py-1 border border-gray-300 ${
+          currentPage === i ? "bg-blue-500 text-white" : "bg-white"
+        }`}
+      >
+        {i}
+      </button>
+    );
+  }
   return (
     <div className="p-6 flex flex-col items-center">
       <div className="w-full max-w-6xl bg-white shadow rounded p-6">
@@ -136,45 +149,36 @@ export default function ProjectManagement() {
           </tbody>
         </table>
       </div>
-      {/* PHÂN TRANG */}
-        {totalPages > 1 && (
-          <div className="flex justify-center items-center space-x-1 mt-6">
-            <button
-              onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage === 1}
-              className={`px-3 py-1 border border-gray-300 rounded-l ${
-                currentPage === 1 ? "text-gray-400 bg-gray-100 cursor-not-allowed" : "bg-white"
-              }`}
-            >
-              ‹
-            </button>
+      {totalPages > 1 && (
+        <div className="flex justify-center items-center space-x-1 mt-6">
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className={`px-3 py-1 border border-gray-300 rounded-l ${
+              currentPage === 1
+                ? "text-gray-400 bg-gray-100 cursor-not-allowed"
+                : "bg-white"
+            }`}
+          >
+            ‹
+          </button>
 
-            {Array.from({ length: totalPages }, (_, i) => (
-              <button
-                key={i + 1}
-                onClick={() => handlePageChange(i + 1)}
-                className={`px-3 py-1 border border-gray-300 ${
-                  currentPage === i + 1 ? "bg-blue-500 text-white" : "bg-white"
-                }`}
-              >
-                {i + 1}
-              </button>
-            ))}
-            
-
-            <button
-              onClick={() => handlePageChange(currentPage + 1)}
-              disabled={currentPage === totalPages}
-              className={`px-3 py-1 border border-gray-300 rounded-r ${
-                currentPage === totalPages
-                  ? "text-gray-400 bg-gray-100 cursor-not-allowed"
-                  : "bg-white"
-              }`}
-            >
-              ›
-            </button>
+          <div className="flex justify-center items-center space-x-1 ">
+            {buttons}
           </div>
-        )}
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className={`px-3 py-1 border border-gray-300 rounded-r ${
+              currentPage === totalPages
+                ? "text-gray-400 bg-gray-100 cursor-not-allowed"
+                : "bg-white"
+            }`}
+          >
+            ›
+          </button>
+        </div>
+      )}
 
       <AddAndEditProject
         isOpen={isOpen}

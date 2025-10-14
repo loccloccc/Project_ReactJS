@@ -19,9 +19,6 @@ export default function AddAndEditDetails({
   edit,
 }: PropsAddandEdit) {
   if (!isOpen) return null;
-  //
-  if (edit != null) console.log("edit ben addAndEdit :", edit);
-
   const [nameTask, setNameTask] = useState("");
   const [personTask, setPersonTask] = useState("");
   const [status, setStatus] = useState("");
@@ -38,11 +35,9 @@ export default function AddAndEditDetails({
   const [priorityError, setPriorityError] = useState("");
   const [progressError, setProgressError] = useState("");
   const dispatch: any = useDispatch();
-  // lấy user
   const users = useSelector((data: any) => {
     return data.account.users;
   });
-  // laasy project
   const projects = useSelector((data: any) => {
     return data.management.project;
   });
@@ -73,7 +68,15 @@ export default function AddAndEditDetails({
     }
   }, [edit, projects, users]);
 
-  // luuw
+    const resForm = () => {
+        setNameTaskError("");
+        setPersonTaskError("");
+        setStatusError("");
+        setDayStartError("");
+        setDayEndError("");
+        setPriorityError("");
+        setProgressError("")
+    }
   const handleSave = () => {
     if (
       !nameTask ||
@@ -132,7 +135,9 @@ export default function AddAndEditDetails({
       onClose();
     }
   };
-
+  const handleReset = () => {
+    resForm();
+  }
   return (
     <div className="fixed inset-0 bg-black/30 flex justify-center items-center z-70">
       <div className="bg-white w-[500px] max-h-[800px] overflow-y-auto rounded-lg shadow-lg p-5">
@@ -152,6 +157,7 @@ export default function AddAndEditDetails({
               }`}
               onChange={(e) => setNameTask(e.target.value)}
               value={nameTask}
+              onClick={handleReset}
             />
             {/* lỗi validate */}
             {nameTaskError && (
@@ -166,6 +172,7 @@ export default function AddAndEditDetails({
               }`}
               onChange={(e) => setPersonTask(e.target.value)}
               value={personTask}
+              onClick={handleReset}
             >
               <option value={"0"}>Chọn người...</option>
               {project?.members.map((member: any, index: number) => {
@@ -190,6 +197,7 @@ export default function AddAndEditDetails({
               }`}
               onChange={(e) => setStatus(e.target.value)}
               value={status}
+              onClick={handleReset}
             >
               <option value="0">Chọn trạng thái nhiệm vụ</option>
               <option value={"todo"}>to do</option>
@@ -210,6 +218,7 @@ export default function AddAndEditDetails({
               }`}
               onChange={(e) => setDayStart(e.target.value)}
               value={dayStart}
+              onClick={handleReset}
             />
             {dayStartError && (
               <p className="text-red-500 text-sm mt-1">{dayStartError}</p>
@@ -224,6 +233,7 @@ export default function AddAndEditDetails({
               }`}
               onChange={(e) => setDayEnd(e.target.value)}
               value={dayEnd}
+              onClick={handleReset}
             />
             {dayEndError && (
               <p className="text-red-500 text-sm mt-1">{dayEndError}</p>
@@ -237,6 +247,7 @@ export default function AddAndEditDetails({
               }`}
               onChange={(e) => setPriority(e.target.value)}
               value={priority}
+              onClick={handleReset}
             >
               <option value={"0"}>Chọn độ ưu tiên nhiệm vụ</option>
               <option value={"thấp"}>Thấp</option>
@@ -255,6 +266,7 @@ export default function AddAndEditDetails({
               }`}
               onChange={(e) => setProgress(e.target.value)}
               value={progress}
+              onClick={handleReset}
             >
               <option value={"0"}>Chọn tiến độ dự án</option>
               <option value={"đúng tiến độ"}>Đúng tiến độ</option>

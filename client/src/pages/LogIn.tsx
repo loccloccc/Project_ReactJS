@@ -19,7 +19,10 @@ export default function LogIn() {
   }, [dispatch]);
 
   const navi = useNavigate();
-
+  const resForm = () => {
+    setEmailError("");
+    setPasswordError("");
+  }
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setEmailError("");
@@ -46,14 +49,8 @@ export default function LogIn() {
         navi(`/${user.id}/management`);
       });
     } else {
-      Swal.fire({
-        icon: "error",
-        title: "Đăng nhập thất bại",
-        text: "Sai email hoặc mật khẩu!",
-      }).then(() => {
-        setEmail("");
-        setPassword("");
-      });
+      setEmailError("Sai email hoặc mật khẩu");
+      setPasswordError("Sai email hoặc mật khẩu");
     }
   };
 
@@ -76,6 +73,7 @@ export default function LogIn() {
                 }`}
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
+                onClick={() => {resForm()}}
               />
               {emailError && (
                 <p className="text-red-500 text-sm mt-1">{emailError}</p>
@@ -92,6 +90,7 @@ export default function LogIn() {
                 }`}
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
+                onClick={() => {resForm()}}
               />
               {passwordError && (
                 <p className="text-red-500 text-sm mt-1">{passwordError}</p>

@@ -28,7 +28,7 @@ export default function ProjectDetail() {
 
 
   const { projectId } = useParams();
-  console.log("details id ", projectId);
+
 
   // lấy data project
   const dispatch: any = useDispatch();
@@ -43,7 +43,6 @@ export default function ProjectDetail() {
 
   // lay task
   const tasks = useSelector((data: any) => {
-    console.log(data.details.task);
     return data.details.task;
   });
 
@@ -203,7 +202,9 @@ export default function ProjectDetail() {
                           {user?.fullName}
                         </td>
                         <td className="p-2 border border-gray-300">
-                          <span className={`px-2 py-1 bg-green-100 text-green-600 rounded-lg text-xs`}>
+                          <span className={`px-2 py-1  rounded-lg text-xs
+                              ${value.priority === "thấp" ? "bg-red-100 text-red-600" : value.priority === "cao" ? "bg-green-100 text-green-600" : "bg-orange-100 text-orange-600" }
+                            `}>
                             {value.priority}
                           </span>
                         </td>
@@ -214,7 +215,9 @@ export default function ProjectDetail() {
                           {value.dueDate}
                         </td>
                         <td className="p-2 border border-gray-300">
-                          <span className={`px-2 py-1 bg-green-100 text-green-600 rounded-lg text-xs`}>
+                          <span className={`px-2 py-1  rounded-lg text-xs
+                              ${value.progress === "chậm tiến độ" ? "bg-red-100 text-red-600" : value.progress === "đúng tiến độ" ? "bg-green-100 text-green-600" : "bg-orange-100 text-orange-600" }
+                            `}>
                             {value.progress}
                           </span>
                         </td>
@@ -274,7 +277,9 @@ export default function ProjectDetail() {
                           {user?.fullName}
                         </td>
                         <td className="p-2 border border-gray-300">
-                          <span className="px-2 py-1 bg-green-100 text-green-600 rounded-lg text-xs">
+                          <span className={`px-2 py-1  rounded-lg text-xs
+                              ${value.priority === "thấp" ? "bg-red-100 text-red-600" : value.priority === "cao" ? "bg-green-100 text-green-600" : "bg-orange-100 text-orange-600" }
+                            `}>
                             {value.priority}
                           </span>
                         </td>
@@ -285,7 +290,9 @@ export default function ProjectDetail() {
                           {value.dueDate}
                         </td>
                         <td className="p-2 border border-gray-300">
-                          <span className="px-2 py-1 bg-green-100 text-green-600 rounded-lg text-xs">
+                          <span className={`px-2 py-1  rounded-lg text-xs
+                              ${value.progress === "chậm tiến độ" ? "bg-red-100 text-red-600" : value.progress === "đúng tiến độ" ? "bg-green-100 text-green-600" : "bg-orange-100 text-orange-600" }
+                            `}>
                             {value.progress}
                           </span>
                         </td>
@@ -345,7 +352,9 @@ export default function ProjectDetail() {
                           {user?.fullName}
                         </td>
                         <td className="p-2 border border-gray-300">
-                          <span className="px-2 py-1 bg-green-100 text-green-600 rounded-lg text-xs">
+                          <span className={`px-2 py-1  rounded-lg text-xs
+                              ${value.priority === "thấp" ? "bg-red-100 text-red-600" : value.priority === "cao" ? "bg-green-100 text-green-600" : "bg-orange-100 text-orange-600" }
+                            `}>
                             {value.priority}
                           </span>
                         </td>
@@ -356,7 +365,9 @@ export default function ProjectDetail() {
                           {value.dueDate}
                         </td>
                         <td className="p-2 border border-gray-300">
-                          <span className="px-2 py-1 bg-green-100 text-green-600 rounded-lg text-xs">
+                          <span className={`px-2 py-1  rounded-lg text-xs
+                              ${value.progress === "chậm tiến độ" ? "bg-red-100 text-red-600" : value.progress === "đúng tiến độ" ? "bg-green-100 text-green-600" : "bg-orange-100 text-orange-600" }
+                            `}>
                             {value.progress}
                           </span>
                         </td>
@@ -416,7 +427,9 @@ export default function ProjectDetail() {
                           {user?.fullName}
                         </td>
                         <td className="p-2 border border-gray-300">
-                          <span className="px-2 py-1 bg-green-100 text-green-600 rounded-lg text-xs">
+                          <span className={`px-2 py-1  rounded-lg text-xs
+                              ${value.priority === "thấp" ? "bg-red-100 text-red-600" : value.priority === "cao" ? "bg-green-100 text-green-600" : "bg-orange-100 text-orange-600" }
+                            `}>
                             {value.priority}
                           </span>
                         </td>
@@ -427,7 +440,9 @@ export default function ProjectDetail() {
                           {value.dueDate}
                         </td>
                         <td className="p-2 border border-gray-300">
-                          <span className="px-2 py-1 bg-green-100 text-green-600 rounded-lg text-xs">
+                          <span className={`px-2 py-1  rounded-lg text-xs
+                              ${value.progress === "chậm tiến độ" ? "bg-red-100 text-red-600" : value.progress === "đúng tiến độ" ? "bg-green-100 text-green-600" : "bg-orange-100 text-orange-600" }
+                            `}>
                             {value.progress}
                           </span>
                         </td>

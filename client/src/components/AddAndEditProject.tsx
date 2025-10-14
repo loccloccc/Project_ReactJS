@@ -171,6 +171,7 @@ export default function AddAndEditProject({
               }`}
               value={nameProject}
               onChange={(e) => setNameProject(e.target.value)}
+              onClick={() => {resetForm()}}
             />
             {errorName && <p className="text-red-500 text-sm mt-1">{errorName}</p>}
           </div>
@@ -186,6 +187,7 @@ export default function AddAndEditProject({
                 errorImg ? "border-red-500" : "border-gray-300"
               }`}
               onChange={handleInputImage}
+              onClick={() => {resetForm()}}
             />
             {errorImg && <p className="text-red-500 text-sm mt-1">{errorImg}</p>}
             {url && (
